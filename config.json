@@ -1,0 +1,4 @@
+{
+  "connection_string": "root:root12345@tcp(127.0.0.1:3306)/demo",
+  "port": 8080
+}
