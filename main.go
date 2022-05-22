@@ -20,12 +20,12 @@ func main() {
 	service.Connect(AppConfig.ConnectionString)
 	service.Migrate()
 	router := mux.NewRouter().StrictSlash(true)
-	docs.SwaggerInfo.Title = "GO Example API"
+	docs.SwaggerInfo.Title = "GO Assignment Project"
 	docs.SwaggerInfo.Description = " Create REST API"
 	docs.SwaggerInfo.Version = "1.0"
 	docs.SwaggerInfo.Host = "localhost:8080"
 	docs.SwaggerInfo.BasePath = ""
-	docs.SwaggerInfo.Schemes = []string{"http", "https"}
+	docs.SwaggerInfo.Schemes = []string{"http"}
 	RegisterApiRoutes(router)
 	http.Handle("/", router)
 	log.Fatal(http.ListenAndServe("localhost:8080", nil))
