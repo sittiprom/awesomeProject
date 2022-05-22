@@ -17,11 +17,16 @@ func CreateEmployee(writer http.ResponseWriter, request *http.Request) {
 }
 
 func GetEmployeeById(writer http.ResponseWriter, request *http.Request) {
-	var employee model.Employee
 	id := mux.Vars(request)["id"]
-	service.Connector.First(&employee, id)
+	var empFromDB model.Employee
+	service.Connector.First(&empFromDB, id)
+	if empFromDB.ID == 0 {
+		writer.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(writer).Encode(" Employee Not Found with " + id)
+		return
+	}
 	writer.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(writer).Encode(employee)
+	json.NewEncoder(writer).Encode(empFromDB)
 }
 
 func GetAllEmployee(writer http.ResponseWriter, request *http.Request) {
@@ -34,11 +39,16 @@ func GetAllEmployee(writer http.ResponseWriter, request *http.Request) {
 }
 func UpdateEmployee(writer http.ResponseWriter, request *http.Request) {
 	id := mux.Vars(request)["id"]
-	var employee model.Employee
-	service.Connector.First(&employee, id)
-	json.NewDecoder(request.Body).Decode(&employee)
-	service.Connector.Save(&employee)
+	var empFromDB model.Employee
+	service.Connector.First(&empFromDB, id)
+	if empFromDB.ID == 0 {
+		writer.WriteHeader(http.StatusNotFound)
+		json.NewEncoder(writer).Encode(" Employee Not Found with " + id)
+		return
+	}
+	json.NewDecoder(request.Body).Decode(&empFromDB)
+	service.Connector.Save(&empFromDB)
 	writer.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(writer).Encode(employee)
+	json.NewEncoder(writer).Encode(empFromDB)
 
 }
