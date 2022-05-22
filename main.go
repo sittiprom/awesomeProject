@@ -30,5 +30,6 @@ func RegisterApiRoutes(router *mux.Router) {
 	router.HandleFunc("/employee/{id}", controller.GetEmployeeById).Methods("GET")
 	router.HandleFunc("/employee/create", controller.CreateEmployee).Methods("POST")
 	router.HandleFunc("/employee/update/{id}", controller.UpdateEmployee).Methods("PUT")
+	router.HandleFunc("/covid/vaccines/{country}", controller.GetVaccineData).Methods("GET")
 
 }
