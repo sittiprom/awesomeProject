@@ -10,6 +10,14 @@ import (
 	"net/http"
 )
 
+// @Summary       Get VaccineData Data
+// @Description   Get VaccineData by country since it is the test data only some country is working . Please input Thailand , Greece and Laos
+// @Tags  vaccine
+// @Accept       json
+// @Produce      json
+// @Param        country  	path   string   	true "Thailand"
+// @Success      200  {object}  model.Vaccine
+// @Router       /covid/vaccines/{country} [get]
 func GetVaccineData(writer http.ResponseWriter, request *http.Request) {
 	country := mux.Vars(request)["country"]
 	url := "https://covid-api.mmediagroup.fr/v1/vaccines?country=" + country
