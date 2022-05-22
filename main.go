@@ -19,6 +19,7 @@ func main() {
 	LoadAppConfig()
 	service.Connect(AppConfig.ConnectionString)
 	service.Migrate()
+	service.ConnectRedis()
 	router := mux.NewRouter().StrictSlash(true)
 	docs.SwaggerInfo.Title = "GO Assignment Project"
 	docs.SwaggerInfo.Description = " Create REST API"
