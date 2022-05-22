@@ -14,5 +14,5 @@ type VaccineDetail struct {
 	Location                  string `json:"location"`
 	Iso                       int    `json:"iso"`
 	CapitalCity               string `json:"capital_city"`
-	Update                    string `json:"update"`
+	Update                    string `json:"updated"`
 }
