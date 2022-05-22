@@ -24,7 +24,7 @@ func CreateEmployee(writer http.ResponseWriter, request *http.Request) {
 	json.NewEncoder(writer).Encode(employee)
 }
 
-// @Summary       Get Employee Data
+// @Summary       Get Employee By Id
 // @Description   Get Employee By Id
 // @Tags  Employee
 // @Accept       json
@@ -45,7 +45,7 @@ func GetEmployeeById(writer http.ResponseWriter, request *http.Request) {
 	json.NewEncoder(writer).Encode(empFromDB)
 }
 
-// @Summary       Get Employee Data
+// @Summary       Get All Employees
 // @Description   Get All Employees
 // @Tags  Employee
 // @Accept       json
@@ -61,7 +61,7 @@ func GetAllEmployee(writer http.ResponseWriter, request *http.Request) {
 
 }
 
-// @Summary       Update Employee
+// @Summary       Update Employee By Id
 // @Description   Update Employee
 // @Tags  Employee
 // @Accept       json
